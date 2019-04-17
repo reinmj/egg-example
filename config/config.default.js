@@ -2,6 +2,8 @@
 
 'use strict';
 
+// const path = require('path');
+
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
@@ -17,6 +19,24 @@ module.exports = appInfo => {
 
   // add your middleware config here
   config.middleware = [];
+
+  // config.view = {
+  //   root: [
+  //     path.join(appInfo.baseDir, 'app/view'),
+  //     path.join(appInfo.baseDir, 'path/to/another'),
+  //   ].join(',')
+  // };
+  config.view = {
+    defaultViewEngine: 'nunjucks',
+    mapping: {
+      '.tpl': 'nunjucks',
+    },
+  };
+
+  config.news = {
+    pageSize: 5,
+    serverUrl: 'https://hacker-news.firebaseio.com/v0',
+  };
 
   // add your user config here
   const userConfig = {
